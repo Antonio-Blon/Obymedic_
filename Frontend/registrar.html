@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Consulta</title>
+    <link rel="stylesheet" href="assets/css/registrar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="registrar-wrapper">
+      <header class="topbar">
+        <h1>DASHBOARD</h1>
+        <a href="interfaz.html" class="close-link">
+          <i class="fa-solid fa-xmark"></i>
+        </a>
+      </header>
+
+      <div class="registrar-layout">
+        <aside class="sidebar">
+          <nav class="sidebar-menu">
+            <a href="registrar.html">Historial Médico</a>
+            <a href="ver.html">Pacientes</a>
+          </nav>
+        </aside>
+
+        <main class="main-content">
+          <form class="consulta-form">
+            <h2>CONSULTA EXTERNA</h2>
+
+            <div class="grid-top">
+              <div class="field">
+                <label>Nombre y Apellidos</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>Teléfono</label>
+                <input type="text" />
+              </div>
+
+              <div class="field field-full">
+                <label>Dirección</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>Distrito</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>Provincia</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>DNI</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>F.N.</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>Edad</label>
+                <input type="text" />
+              </div>
+            </div>
+
+            <div class="section-row">
+              <div class="field grow">
+                <label>Motivo de la consulta</label>
+                <input type="text" />
+              </div>
+
+              <div class="field small">
+                <label>Fecha</label>
+                <input type="date" />
+              </div>
+            </div>
+
+            <div class="exam-header">
+              <span>Examen Físico</span>
+              <div class="mini-fields">
+                <div class="mini-field">
+                  <label>P.A</label>
+                  <input type="text" />
+                </div>
+                <div class="mini-field">
+                  <label>F.C.</label>
+                  <input type="text" />
+                </div>
+                <div class="mini-field">
+                  <label>F.R</label>
+                  <input type="text" />
+                </div>
+                <div class="mini-field">
+                  <label>T°</label>
+                  <input type="text" />
+                </div>
+                <div class="mini-field">
+                  <label>Peso</label>
+                  <input type="text" />
+                </div>
+                <div class="mini-field">
+                  <label>Talla</label>
+                  <input type="text" />
+                </div>
+                <div class="mini-field">
+                  <label>SPO2</label>
+                  <input type="text" />
+                </div>
+              </div>
+            </div>
+
+            <div class="textarea-block">
+              <label>Diagnóstico</label>
+              <textarea></textarea>
+            </div>
+
+            <div class="textarea-block">
+              <label>Tratamiento</label>
+              <textarea></textarea>
+            </div>
+
+            <div class="textarea-block">
+              <label>Exámenes Auxiliares</label>
+              <textarea></textarea>
+            </div>
+
+            <div class="bottom-fields">
+              <div class="field">
+                <label>Próxima Cita</label>
+                <input type="text" />
+              </div>
+
+              <div class="field">
+                <label>Firma y Sello</label>
+                <input type="text" />
+              </div>
+            </div>
+
+            <div class="field atencion">
+              <label>Atención por</label>
+              <input type="text" />
+            </div>
+
+            <div class="footer-box">
+              <div class="logo-area">
+                <img src="../Obymedic/assets/img/logo.png" class="logo-img" />
+              </div>
+
+              <div class="footer-info">
+                <p>Sistema de gestión de historias</p>
+                <p>Clínicas obstetricia y Medicina</p>
+                <button type="button" class="register-btn"
+                onclick="window.location.href='ver.html'">
+                REGISTRAR
+                </button>
+                
+              </div>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

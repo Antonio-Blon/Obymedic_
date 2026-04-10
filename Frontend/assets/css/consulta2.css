@@ -1,0 +1,367 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #fff;
+}
+
+.topbar {
+  height: 50px;
+  width: 100%;
+  background: #c6b5a7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border-bottom: 1px solid #b8a696;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+.close-link {
+  width: 34px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #111;
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 6px;
+}
+
+.interfaz-layout {
+  display: flex;
+  min-height: calc(100vh - 50px);
+  width: 100%;
+}
+
+.page,
+.hoja {
+  width: 100%;
+  max-width: 1150px;
+  margin: 10px auto;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #7a7a7a;
+}
+
+.record,
+.ficha,
+.consulta-bloque {
+  width: 100%;
+  margin-bottom: 12px;
+  border: 1px solid #7a7a7a;
+}
+
+.top-row,
+.fila-superior,
+.linea-superior {
+  display: grid;
+  grid-template-columns: 2fr 1.15fr 1fr;
+  width: 100%;
+  border-bottom: 1px solid #7a7a7a;
+}
+
+.field,
+.celda,
+.campo,
+.exam-box,
+.celda-examen,
+.mini-campo,
+.celda-final {
+  display: flex;
+  align-items: center;
+  min-height: 35px;
+  overflow: hidden;
+  border-right: 1px solid #7a7a7a;
+}
+
+.field:last-child,
+.celda:last-child,
+.campo:last-child,
+.exam-box:last-child,
+.celda-examen:last-child,
+.mini-campo:last-child,
+.celda-final:last-child,
+.bottom-box:last-child {
+  border-right: none;
+}
+
+.label,
+.texto-lateral,
+.campo label,
+.exam-box span,
+.celda-examen span,
+.mini-campo label,
+.bottom-line,
+.celda-final {
+  font-size: 12px;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+
+.blue,
+.etiqueta-azul,
+.exam-title,
+.titulo-examen,
+.section-title,
+.titulo,
+.titulo-seccion {
+  background: #79c8e0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.etiqueta-azul,
+.exam-title,
+.titulo-examen,
+.section-title,
+.titulo,
+.titulo-seccion {
+  padding: 4px 8px;
+}
+
+.field input,
+.celda input,
+.campo input,
+.linea-vacia,
+.exam-box input,
+.celda-examen input,
+.mini-campo input,
+.celda-final input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.exam-row,
+.fila-examen,
+.examen-fisico {
+  display: grid;
+  grid-template-columns: 1.15fr repeat(7, 1fr);
+  width: 100%;
+  border-bottom: 1px solid #7a7a7a;
+}
+
+.exam-title,
+.titulo-examen {
+  justify-content: flex-start;
+  min-height: 40px;
+  border-right: 1px solid #7a7a7a;
+  font-size: 12px;
+}
+
+.ruled-lines,
+.area,
+.area-lineada,
+.section textarea,
+.bloque textarea,
+.area textarea,
+.bottom-textarea {
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff 0,
+    #fff 20px,
+    #b9b9b9 20px,
+    #b9b9b9 21px
+  );
+}
+
+.lines-3 { height: 63px; }
+.lines-5 { height: 105px; }
+
+.section,
+.bloque,
+.bloque-texto {
+  width: 100%;
+  border-bottom: 1px solid #7a7a7a;
+}
+
+.section-title,
+.titulo,
+.titulo-seccion {
+  width: 100%;
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.section textarea,
+.bloque textarea,
+.area textarea {
+  width: 100%;
+  min-height: 120px;
+  border: none;
+  outline: none;
+  resize: none;
+  font: 12px/20px Arial, Helvetica, sans-serif;
+  padding: 4px 8px;
+}
+
+.bottom-grid,
+.fila-inferior,
+.fila-final,
+.footer-box {
+  display: grid;
+  width: 100%;
+}
+
+.bottom-grid,
+.fila-inferior,
+.fila-final {
+  grid-template-columns: 1fr 1fr;
+}
+
+.bottom-grid,
+.fila-inferior {
+  border-bottom: 1px solid #7a7a7a;
+}
+
+.bottom-box,
+.celda-inferior {
+  border-right: 1px solid #7a7a7a;
+}
+
+.bottom-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-box.full {
+  grid-column: 1 / -1;
+  border-top: 1px solid #7a7a7a;
+}
+
+.bottom-line {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #7a7a7a;
+}
+
+.bottom-textarea {
+  width: 100%;
+  min-height: 60px;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 6px 8px;
+  font: 12px Arial, Helvetica, sans-serif;
+}
+
+.celda-final {
+  padding: 0 8px;
+}
+
+.footer-box {
+  grid-template-columns: 1fr 1fr;
+  min-height: 250px;
+  border-top: 1px solid #7a7a7a;
+}
+
+.footer-left,
+.footer-right {
+  min-height: 250px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: flex-end;
+  padding: 12px 8px;
+  font-size: 12px;
+  border-right: 1px solid #7a7a7a;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+.logo-area {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-info {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.footer-info p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.register-btn {
+  min-width: 190px;
+  height: 52px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #b8a79a;
+  color: #000;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .logo-area,
+  .footer-info {
+    width: 100%;
+  }
+
+  .exam-row,
+  .fila-examen,
+  .examen-fisico {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .exam-title,
+  .titulo-examen {
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: 1px solid #7a7a7a;
+  }
+}

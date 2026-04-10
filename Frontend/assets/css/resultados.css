@@ -96,6 +96,7 @@ body {
   font-family: Georgia, serif;
   font-size: 1rem;
   cursor: pointer;
+  margin-right: 15px;
 }
 
 /* TABLET */
@@ -144,16 +145,6 @@ body {
     text-align: left;
     padding: 0 14px;
   }
-
-  .button-row {
-    margin-top: 50px;
-  }
-
-  .button-row button {
-    width: 140px;
-    height: 46px;
-    font-size: 1.05rem;
-  }
 }
 
 /* WEB */
@@ -178,11 +169,5 @@ body {
 
   .form-group input {
     height: 48px;
-  }
-
-  .button-row button {
-    width: 150px;
-    height: 48px;
-    font-size: 1.1rem;
   }
 }

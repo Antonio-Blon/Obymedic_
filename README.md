@@ -201,19 +201,20 @@ CREATE TABLE consultas (
 ### Configuracion de base de datos
 
 ```
-spring.application.name=gotagota
-# CONEXION A MYSQL
-spring.datasource.url=jdbc:mysql://localhost:3306/gota_a_gota
+spring.application.name=obymedic
+
+#CONEXION A MYSQL
+spring.datasource.url=jdbc:mysql://localhost:3306/obymedic
 spring.datasource.username=root
 spring.datasource.password=
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-#JPA / HIBERNATE
+# JPA / HIBERNATE
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
 
-# Puerto del servidor
+# PUERTO
 server.port=8080
 
 ```

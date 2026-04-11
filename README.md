@@ -88,8 +88,76 @@ El sistema cuenta con 4 tablas principales:
 
 
 ### DIAGRAMA DE FIGMA
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/design/BXoCcKRR9FjiXnO5TxFhuK/Proyecto-Senati?node-id=1-7&embed-host=share" allowfullscreen></iframe>
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/fxKnmW0QxHQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+### Base de datos
+ 
+El sistema cuenta con 4 tablas principales:
+
+``` sql
+CREATE DATABASE obymedic;
+USE obymedic;
+
+-- =========================
+-- TABLA PACIENTES
+-- =========================
+CREATE TABLE pacientes (
+    id_paciente BIGINT AUTO_INCREMENT PRIMARY KEY,
+    
+    nombre_apellidos VARCHAR(150) NOT NULL,
+    dni VARCHAR(8) NOT NULL UNIQUE,
+    
+    telefono VARCHAR(20),
+    direccion VARCHAR(150),
+    distrito VARCHAR(100),
+    provincia VARCHAR(100),
+
+    fecha_nacimiento VARCHAR(20),
+    edad INT,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- =========================
+-- TABLA CONSULTAS
+-- =========================
+CREATE TABLE consultas (
+    id_consulta BIGINT AUTO_INCREMENT PRIMARY KEY,
+
+    id_paciente BIGINT NOT NULL,
+
+    fecha DATE,
+    motivo VARCHAR(255),
+    edad INT,
+
+    pa VARCHAR(20),
+    fc VARCHAR(20),
+    fr VARCHAR(20),
+    temperatura VARCHAR(20),
+    peso DOUBLE,
+    talla DOUBLE,
+    spo2 VARCHAR(10),
+
+    diagnostico TEXT,
+    tratamiento TEXT,
+    examenes_auxiliares TEXT,
+
+    proxima_cita DATE,
+    firma_sello VARCHAR(150),
+    atencion_por VARCHAR(150),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    -- RELACION CON PACIENTES
+    CONSTRAINT fk_paciente
+    FOREIGN KEY (id_paciente)
+    REFERENCES pacientes(id_paciente)
+    ON DELETE CASCADE
+);
+
+```
 
 

@@ -103,7 +103,7 @@ El sistema cuenta con 4 tablas principales:
 ### DIAGRAMA DE FIGMA
 
 Más info en [Mi Diseño Figma]([https://trello.com/invite/b/69bc3ede73d188581baa1482/ATTI3f827d0ff18d1e9bfddfe0ef1a6bd47a27F9FC1E/proyecto-consultas-obymedic](https://www.figma.com/design/F0hS7gps6mz5811iBBZVr8/Entregable-01?node-id=1-2&t=1I4VFzDYAzfZAZIh-1))
-![TRELLO](recursos/figma.png)
+![FIGMA](recursos/figma.png)
 
 
 ### Base de datos
@@ -172,6 +172,7 @@ CREATE TABLE consultas (
     REFERENCES pacientes(id_paciente)
     ON DELETE CASCADE
 );
+```
 
 ## Como correr el proyecto
  

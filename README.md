@@ -76,7 +76,7 @@ Solucion tecnologica: Se desarrollará un Sistema Digital de Gestión de Histori
 ## Estructura del proyecto
  
 ```
-JavaWeb-GotaGota/
+JavaWeb-Obymedic/
 ├── backend/          → Spring Boot (Java)
 │   ├── src/
 │   ├── pom.xml

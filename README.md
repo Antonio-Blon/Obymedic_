@@ -1,3 +1,5 @@
+## TRELLO
+Más info en [mi tablero de trello] (https://trello.com/b/GUdSJUj1/proyecto-consultas-obymedic)
 # Sistema de Gestión de Historias Clínicas Obstetricia y Medicina
 
 Sistema web para la gestión de registros de historiales medicos de Obstetricia

@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resultado</title>
   <link rel="stylesheet" href="assets/css/resultados.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
   <div class="resultado-wrapper">
     <header class="topbar">
-      <h1>DASHBOARD</h1>
+      <h1>OBYMEDIC</h1>
       <a href="Interfaz.html" class="close-link">
         <i class="fa-solid fa-xmark"></i>
       </a>
@@ -20,27 +21,42 @@
     <main class="resultado-content">
       <form class="resultado-form">
         <div class="form-group">
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" placeholder="Nombre">
+          <label for="nombre">
+            <i class="fa-solid fa-user"></i>
+            Nombre:
+          </label>
+          <input type="text" id="nombre" placeholder="Nombre" readonly>
         </div>
 
         <div class="form-group">
-          <label for="telefono">Teléfono:</label>
-          <input type="text" id="telefono" placeholder="Teléfono">
+          <label for="telefono">
+            <i class="fa-solid fa-phone"></i>
+            Teléfono:
+          </label>
+          <input type="text" id="telefono" placeholder="Teléfono" readonly>
         </div>
 
         <div class="form-group">
-          <label for="fecha">Fecha de Consulta:</label>
-          <input type="text" id="fecha" placeholder="Fecha">
+          <label for="fecha">
+            <i class="fa-solid fa-calendar"></i>
+            Fecha de Consulta:
+          </label>
+          <input type="text" id="fecha" placeholder="Fecha" readonly>
         </div>
 
         <div class="button-row">
-          <button type="button">Mostrar Consulta</button>
-          <button type="button">Nueva Consulta</button>
+          <button type="button">
+            <i class="fa-solid fa-folder-open"></i>
+            Mostrar Consulta
+          </button>
+          <button type="button">
+            <i class="fa-solid fa-plus-circle"></i>
+            Nueva Consulta
+          </button>
         </div>
       </form>
     </main>
   </div>
 
 </body>
-</html> 
+</html>

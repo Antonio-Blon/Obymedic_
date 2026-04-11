@@ -21,27 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.addEventListener("click", closeSidebar);
     }
 
-    // SOLO para marcar el enlace activo (sin bloquear la navegación)
+    // Marcar enlace activo y navegar (sin bloquear)
     const navLinks = document.querySelectorAll(".sidebar ul li a");
 
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
-            // Solo marcar como activo, NO usar preventDefault()
             navLinks.forEach(l => l.classList.remove("activo"));
             link.classList.add("activo");
 
-            // Cerrar sidebar solo en móvil
             if (window.innerWidth < 768) {
                 closeSidebar();
             }
         });
     });
 
-    // Marcar el enlace activo según la URL actual al cargar la página
+    // Marcar activo según la URL actual
     const currentPage = window.location.pathname.split("/").pop();
     navLinks.forEach(link => {
         const href = link.getAttribute("href");
-        if (href === currentPage || (currentPage === "" && href === "ver.html")) {
+        if (href === currentPage || (currentPage === "" && href === "index.html")) {
             link.classList.add("activo");
         }
     });

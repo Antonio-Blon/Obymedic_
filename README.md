@@ -1,7 +1,13 @@
+# SISTEMA DE GESTION DE HISTORIAS CLINICAS - OBYMEDIC
+
+[![TRELLO](https://img.shields.io/badge/TRELLO-KANBAN-blue?style=for-the-badge&logo=trello&logoColor=white)](https://trello.com/invite/b/69bc3ede73d188581baa1482/ATTI3f827d0ff18d1e9bfddfe0ef1a6bd47a27F9FC1E/proyecto-consultas-obymedic)
+[![FIGMA](https://img.shields.io/badge/FIGMA-DISENO-red?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/F0hS7gps6mz5811iBBZVr8/Entregable-01?node-id=1-2&t=1I4VFzDYAzfZAZIh-1)
+
 ## TRELLO
 Más info en [mi tablero de trello](https://trello.com/invite/b/69bc3ede73d188581baa1482/ATTI3f827d0ff18d1e9bfddfe0ef1a6bd47a27F9FC1E/proyecto-consultas-obymedic)
 ![TRELLO](recursos/programacion.png)
-# Sistema de Gestión de Historias Clínicas Obstetricia y Medicina
+
+
 
 Sistema web para la gestión de registros de historiales medicos de Obstetricia
 
@@ -67,6 +73,19 @@ Solucion tecnologica: Se desarrollará un Sistema Digital de Gestión de Histori
 - Figma (diseño UI/UX)
 - Draw.io (diagramas)
 
+## Estructura del proyecto
+ 
+```
+JavaWeb-Obymedic/
+├── backend/          → Spring Boot (Java)
+│   ├── src/
+│   ├── pom.xml
+│   └── ...
+├── frontend/         → HTML, CSS, JS
+│   ├── css/
+│   ├── js/
+│   └── interfaz.html
+```
 
 ## Base de datos
  
@@ -89,6 +108,9 @@ El sistema cuenta con 4 tablas principales:
 
 ### DIAGRAMA DE FIGMA
 
+Más info en [Mi_Diseño_Figma](https://www.figma.com/design/F0hS7gps6mz5811iBBZVr8/Entregable-01?node-id=1-2&t=1I4VFzDYAzfZAZIh-1)
+
+![FIGMA](recursos/figma.png)
 
 
 ### Base de datos
@@ -157,6 +179,49 @@ CREATE TABLE consultas (
     REFERENCES pacientes(id_paciente)
     ON DELETE CASCADE
 );
+```
+
+## Como correr el proyecto
+ 
+### Requisitos previos
+- Tener instalado IntelliJ IDEA
+- Tener instalado XAMPP (para MySQL)
+- Tener instalado MySQL Workbench
+- Tener instalado JDK 21 o superior
+ 
+### Backend
+1. Abrir la carpeta `backend/` en IntelliJ IDEA
+2. Configurar `application.properties` con los datos de MySQL
+3. Iniciar XAMPP y activar MySQL
+4. Ejecutar `GotagotaApplication.java`
+5. El backend corre en: `http://localhost:8080`
+ 
+### Frontend
+1. Abrir la carpeta `frontend/` en VsCode
+2. Abrir `index.html` con Live Server
+3. El frontend se comunica con el backend via fetch()
+ 
+> El frontend y el backend corren por separado.
+> El backend debe estar iniciado antes de abrir el frontend.
+ 
+### Configuracion de base de datos
+
+```
+spring.application.name=obymedic
+
+#CONEXION A MYSQL
+spring.datasource.url=jdbc:mysql://localhost:3306/obymedic
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA / HIBERNATE
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+
+# PUERTO
+server.port=8080
 
 ```
 

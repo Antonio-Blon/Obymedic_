@@ -6,26 +6,27 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
-// Indica que esta clase maneja peticiones HTTP y devuelve JSON
+//3 ANOTACIONES
+//Indica que esta clase maneja peticiones HTTPS y DEVUELVE JSON
 @RestController
-// Define la URL base de los endpoints
+// Define la URL Base de todos los END-POINT de esta clase
 @RequestMapping("api/pacientes")
-// Permite que el frontend consuma esta API
+// Esta anotacion permite que el front-end puede llamar a esta API
+// Si no ponemos esto, el navegador bloquea las peticiones por politicas CORS
 @CrossOrigin(origins = "*")
 
 public class PacienteController {
-
-    // Inyectamos el servicio
+    //DECLARAMOS UNA VARIABLE DEFINIDA
+    // Inyectamos el servicio para acceder a la logica del negocio
     private final PacienteService pacienteService;
 
     public PacienteController(PacienteService pacienteService){
         this.pacienteService = pacienteService;
     }
 
-    // GET /api/pacientes → devuelve todos los pacientes
+    //GET /api/pacientes -> devuelve todos los pacientes en formato JSON
     @GetMapping
     public List<Paciente> listar() {
         return pacienteService.listarTodos();

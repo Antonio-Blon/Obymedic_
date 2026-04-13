@@ -1,62 +1,55 @@
 package com.senati.obymedic.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 // @Entity le dice a Hibernate que esta clase representa una tabla en la BD
 @Entity
 // Indica el nombre exacto de tabla en MYSQL o MariaDB
-@Table(name = "pacientes")
+@Table(name = "paciente")
 public class Paciente {
 
     // @Id marca este campo como la clave primaria de la tabla
-    // @GeneratedValue hace que el id se genere automaticamente (AutoIncrement)
-    // @Column(name="id_paciente") indica el nombre exacto de la columna en mysql
+    // @Column(name="dni") indica el nombre exacto de la columna en mysql
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_paciente")
-    private Long id;
+    @Column(name = "dni")
+    private Integer dni;
 
     // nullable=false significa que este campo no puede estar vacio en la BD
-    @Column(nullable = false)
-    private String nombre_apellidos;
+    @Column(name = "nombre_completo", nullable = false, length = 150)
+    private String nombreCompleto;
 
-    // unique=true significa que no puede haber dos pacientes con el mismo DNI
-    // length=8 limita el campo a 8 caracteres
-    @Column(nullable = false, unique = true, length = 8)
-    private String dni;
-
-    // Sin anotaciones (@) extra: columna normal, puede ser nula
+    @Column(name = "telefono", length = 20)
     private String telefono;
-    private String direccion;
-    private String distrito;
-    private String provincia;
 
-    private String fecha_nacimiento;
-    private Integer edad;
+    @Column(name = "direccion", length = 200)
+    private String direccion;
+
+    @Column(name = "fecha_nacimiento")
+    private LocalDate fechaNacimiento;
+
+    @Column(name = "fecha_registro", updatable = false)
+    private LocalDateTime fechaRegistro;
+
+    @Column(name = "ultima_actualizacion")
+    private LocalDateTime ultimaActualizacion;
 
     // GETTERS Y SETTERS
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre_apellidos() {
-        return nombre_apellidos;
-    }
-
-    public void setNombre_apellidos(String nombre_apellidos) {
-        this.nombre_apellidos = nombre_apellidos;
-    }
-
-    public String getDni() {
+    public Integer getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(Integer dni) {
         this.dni = dni;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
     }
 
     public String getTelefono() {
@@ -75,35 +68,39 @@ public class Paciente {
         this.direccion = direccion;
     }
 
-    public String getDistrito() {
-        return distrito;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setDistrito(String distrito) {
-        this.distrito = distrito;
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getProvincia() {
-        return provincia;
+    public LocalDateTime getFechaRegistro() {
+        return fechaRegistro;
     }
 
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
+    public void setFechaRegistro(LocalDateTime fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public String getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public LocalDateTime getUltimaActualizacion() {
+        return ultimaActualizacion;
     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setUltimaActualizacion(LocalDateTime ultimaActualizacion) {
+        this.ultimaActualizacion = ultimaActualizacion;
     }
 
-    public Integer getEdad() {
-        return edad;
+    // Metodos para auto-llenar fechas
+    @PrePersist
+    protected void onCreate() {
+        fechaRegistro = LocalDateTime.now();
+        ultimaActualizacion = LocalDateTime.now();
     }
 
-    public void setEdad(Integer edad) {
-        this.edad = edad;
+    @PreUpdate
+    protected void onUpdate() {
+        ultimaActualizacion = LocalDateTime.now();
     }
 }

@@ -8,10 +8,10 @@ import java.util.Optional;
 
 // Anotacion @Repository INTERFAZ como la capa de acceso a la base de datos
 @Repository
-public interface PacienteRepository extends JpaRepository<Paciente, Long> {
+public interface PacienteRepository extends JpaRepository<Paciente, Integer> {
 
     // Metodo para buscar paciente por DNI
-    Optional<Paciente> findByDni(String dni);
+    Optional<Paciente> findByDni(Integer dni);
 
-    // JpaRepository ya tiene todolobasico (guardar,eliminar,listar,etc.)
+    // JpaRepository ya tiene todo lo basico (guardar, eliminar, listar, etc.)
 }

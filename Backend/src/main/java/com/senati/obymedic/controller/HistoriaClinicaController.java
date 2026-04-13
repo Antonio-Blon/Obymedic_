@@ -2,10 +2,7 @@ package com.senati.obymedic.controller;
 
 import com.senati.obymedic.entity.HistoriaClinica;
 import com.senati.obymedic.service.HistoriaClinicaService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //3 ANOTACIONES
@@ -30,5 +27,13 @@ public class HistoriaClinicaController {
     @GetMapping
     public List<HistoriaClinica> listar() {
         return historiaClinicaService.listarTodas();
+    }
+
+    // ============================================
+    // POST /api/historias-clinicas -> guarda una nueva historia clinica
+    // ============================================
+    @PostMapping
+    public HistoriaClinica guardar(@RequestBody HistoriaClinica historiaClinica) {
+        return historiaClinicaService.guardar(historiaClinica);
     }
 }

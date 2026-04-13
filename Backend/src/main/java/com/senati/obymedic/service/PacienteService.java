@@ -22,4 +22,11 @@ public class PacienteService {
     public List<Paciente> listarTodos() {
         return pacienteRepository.findAll();
     }
+
+    // ============================================
+    // Guardar o actualizar un paciente
+    // ============================================
+    public Paciente guardar(Paciente paciente) {
+        return pacienteRepository.save(paciente);
+    }
 }

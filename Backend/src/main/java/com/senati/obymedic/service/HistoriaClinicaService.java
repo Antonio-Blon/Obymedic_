@@ -22,4 +22,11 @@ public class HistoriaClinicaService {
     public List<HistoriaClinica> listarTodas() {
         return historiaClinicaRepository.findAll();
     }
+
+    // ============================================
+    // Guardar o actualizar una historia clinica
+    // ============================================
+    public HistoriaClinica guardar(HistoriaClinica historiaClinica) {
+        return historiaClinicaRepository.save(historiaClinica);
+    }
 }

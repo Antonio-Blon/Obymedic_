@@ -2,10 +2,7 @@ package com.senati.obymedic.controller;
 
 import com.senati.obymedic.entity.Paciente;
 import com.senati.obymedic.service.PacienteService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //3 ANOTACIONES
@@ -30,5 +27,13 @@ public class PacienteController {
     @GetMapping
     public List<Paciente> listar() {
         return pacienteService.listarTodos();
+    }
+
+    // ============================================
+    // POST /api/pacientes -> guarda un nuevo paciente
+    // ============================================
+    @PostMapping
+    public Paciente guardar(@RequestBody Paciente paciente) {
+        return pacienteService.guardar(paciente);
     }
 }

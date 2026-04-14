@@ -40,37 +40,30 @@
                 <label>Nombre y Apellidos</label>
                 <input type="text" id="nombre_completo" name="nombre_completo" />
               </div>
-
               <div class="field">
                 <label>Teléfono</label>
                 <input type="text" id="telefono" name="telefono" />
               </div>
-
               <div class="field field-full">
                 <label>Dirección</label>
                 <input type="text" id="direccion" name="direccion" />
               </div>
-
               <div class="field">
                 <label>Distrito</label>
                 <input type="text" id="distrito" name="distrito" />
               </div>
-
               <div class="field">
                 <label>Provincia</label>
                 <input type="text" id="provincia" name="provincia" />
               </div>
-
               <div class="field">
                 <label>DNI</label>
                 <input type="text" id="dni" name="dni" />
               </div>
-
               <div class="field">
                 <label>F.N.</label>
                 <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" />
               </div>
-
               <div class="field">
                 <label>Edad</label>
                 <input type="text" id="edad" name="edad" readonly />
@@ -82,7 +75,6 @@
                 <label>Motivo de la consulta</label>
                 <input type="text" id="motivo_consulta" name="motivo_consulta" />
               </div>
-
               <div class="field small">
                 <label>Fecha</label>
                 <input type="date" id="fecha_consulta" name="fecha_consulta" />
@@ -92,34 +84,13 @@
             <div class="exam-header">
               <span>Examen Físico</span>
               <div class="mini-fields">
-                <div class="mini-field">
-                  <label>P.A</label>
-                  <input type="text" id="pa" name="pa" />
-                </div>
-                <div class="mini-field">
-                  <label>F.C.</label>
-                  <input type="text" id="fc" name="fc" />
-                </div>
-                <div class="mini-field">
-                  <label>F.R</label>
-                  <input type="text" id="fr" name="fr" />
-                </div>
-                <div class="mini-field">
-                  <label>T°</label>
-                  <input type="text" id="temperatura" name="temperatura" />
-                </div>
-                <div class="mini-field">
-                  <label>Peso</label>
-                  <input type="text" id="peso" name="peso" />
-                </div>
-                <div class="mini-field">
-                  <label>Talla</label>
-                  <input type="text" id="talla" name="talla" />
-                </div>
-                <div class="mini-field">
-                  <label>SPO2</label>
-                  <input type="text" id="spo2" name="spo2" />
-                </div>
+                <div class="mini-field"><label>P.A</label><input type="text" id="pa" name="pa" /></div>
+                <div class="mini-field"><label>F.C.</label><input type="text" id="fc" name="fc" /></div>
+                <div class="mini-field"><label>F.R</label><input type="text" id="fr" name="fr" /></div>
+                <div class="mini-field"><label>T°</label><input type="text" id="temperatura" name="temperatura" /></div>
+                <div class="mini-field"><label>Peso</label><input type="text" id="peso" name="peso" /></div>
+                <div class="mini-field"><label>Talla</label><input type="text" id="talla" name="talla" /></div>
+                <div class="mini-field"><label>SPO2</label><input type="text" id="spo2" name="spo2" /></div>
               </div>
             </div>
 
@@ -127,52 +98,49 @@
               <label>Diagnóstico</label>
               <textarea id="diagnostico" name="diagnostico"></textarea>
             </div>
-
             <div class="textarea-block">
               <label>Tratamiento</label>
               <textarea id="tratamiento" name="tratamiento"></textarea>
             </div>
-
             <div class="textarea-block">
               <label>Exámenes Auxiliares</label>
               <textarea id="examenes_auxiliares" name="examenes_auxiliares"></textarea>
             </div>
 
+            <!-- Contenedor con dos columnas: izquierda (Próxima Cita + Atención por) y derecha (Firma y Sello) -->
             <div class="bottom-fields">
-              <div class="field">
-                <label>Próxima Cita</label>
-                <input type="date" id="proxima_cita" name="proxima_cita" />
+              <div class="left-column">
+                <div class="field">
+                  <label>Próxima Cita</label>
+                  <input type="date" id="proxima_cita" name="proxima_cita" />
+                </div>
+                <div class="field atencion-field">
+                  <label>Atención por</label>
+                  <input type="text" id="atencion_por" name="atencion_por" />
+                </div>
               </div>
-
-              <div class="field">
-                <label>Firma y Sello</label>
-                <input type="text" id="firma_sello" name="firma_sello" />
+              <div class="right-column">
+                <div class="field firma-field">
+                  <label>Firma y Sello</label>
+                  <textarea id="firma_sello" name="firma_sello" rows="3" placeholder=""></textarea>
+                </div>
               </div>
-            </div>
-
-            <div class="field atencion">
-              <label>Atención por</label>
-              <input type="text" id="atencion_por" name="atencion_por" />
             </div>
 
             <div class="footer-box">
               <div class="logo-area">
                 <img src="assets/img/logo.png" class="logo-img" alt="Logo" />
               </div>
-
               <div class="footer-info">
                 <p>Sistema de gestión de historias</p>
                 <p>Clínicas obstetricia y Medicina</p>
-                <button type="button" id="btn-registrar" class="register-btn">
-                  REGISTRAR
-                </button>
+                <button type="button" id="btn-registrar" class="register-btn">REGISTRAR</button>
               </div>
             </div>
           </form>
         </main>
       </div>
     </div>
-    <!-- SCRIPT EXTERNO -->
     <script src="assets/js/registrar.js"></script>
   </body>
 </html>

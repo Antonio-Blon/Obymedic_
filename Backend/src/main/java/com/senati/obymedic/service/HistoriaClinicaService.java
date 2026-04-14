@@ -23,10 +23,23 @@ public class HistoriaClinicaService {
         return historiaClinicaRepository.findAll();
     }
 
-    // ============================================
     // Guardar o actualizar una historia clinica
-    // ============================================
     public HistoriaClinica guardar(HistoriaClinica historiaClinica) {
         return historiaClinicaRepository.save(historiaClinica);
+    }
+
+    // Buscar por ID
+    public HistoriaClinica buscarPorId(Integer id) {
+        return historiaClinicaRepository.findById(id).orElse(null);
+    }
+
+    // Verificar si existe por ID
+    public boolean existsById(Integer id) {
+        return historiaClinicaRepository.existsById(id);
+    }
+
+    // Eliminar por ID
+    public void eliminar(Integer id) {
+        historiaClinicaRepository.deleteById(id);
     }
 }

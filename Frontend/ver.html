@@ -1,55 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Buscar Paciente | OBYMEDIC</title>
-    <link rel="stylesheet" href="assets/css/buscar.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"rel="stylesheet"/>
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  </head>
-  <body>
-    <div class="buscar-wrapper">
-      <header class="topbar">
-        <h1>OBYMEDIC</h1>
-        <a href="interfaz.html" class="close-link">
-          <i class="fa-solid fa-xmark"></i>
-        </a>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Paciente | OBYMEDIC</title>
+  <link rel="stylesheet" href="assets/css/buscar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="buscar-wrapper">
+    <header class="topbar">
+      <h1>OBYMEDIC</h1>
+      <a href="interfaz.html" class="close-link">
+        <i class="fa-solid fa-xmark"></i>
+      </a>
+    </header>
 
-      <div class="buscar-layout">
-        <aside class="sidebar">
-          <nav class="sidebar-menu">
-            <a href="registrar.html">
-              <i class="fa-solid fa-folder-open"></i>
-              Historial Médico
-            </a>
-            <a href="ver.html">
-              <i class="fa-solid fa-users"></i>
-              Pacientes
-            </a>
-          </nav>
-        </aside>
+    <div class="buscar-layout">
+      <aside class="sidebar">
+        <nav class="sidebar-menu">
+          <a href="registrar.html">
+            <i class="fa-solid fa-folder-open"></i>
+            Historial Médico
+          </a>
+          <a href="ver.html">
+            <i class="fa-solid fa-users"></i>
+            Pacientes
+          </a>
+        </nav>
+      </aside>
 
-        <main class="main-content">
-          <div class="search-box">
-            <h2>
-              <i class="fa-solid fa-magnifying-glass"></i>
-              Buscar Paciente
-            </h2>
+      <main class="main-content">
+        <div class="search-box">
+          <h2>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Buscar Paciente
+          </h2>
 
-            <input type="text" placeholder="Ingrese número de DNI" />
+          <input type="text" id="dni" placeholder="Ingrese número de DNI" />
 
-            <button
-              type="button"
-              onclick="window.location.href = 'resultado.html'"
-            >
-              <i class="fa-solid fa-search"></i>
-              BUSCAR
-            </button>
-          </div>
-        </main>
-      </div>
+          <button type="button" id="btnBuscar">
+            <i class="fa-solid fa-search"></i>
+            BUSCAR
+          </button>
+        </div>
+      </main>
     </div>
-  </body>
+  </div>
+
+  <script src="assets/js/buscar.js"></script>
+</body>
 </html>

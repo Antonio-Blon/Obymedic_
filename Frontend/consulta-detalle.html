@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Consulta | OBYMEDIC</title>
+  <link rel="stylesheet" href="assets/css/registrar.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="registrar-wrapper">
+    <header class="topbar">
+      <h1>OBYMEDIC</h1>
+      <a href="resultado.html" class="close-link">
+        <i class="fa-solid fa-xmark"></i>
+      </a>
+    </header>
+
+    <div class="registrar-layout">
+      <aside class="sidebar">
+        <nav class="sidebar-menu">
+          <a href="registrar.html">
+            <i class="fa-solid fa-folder-open"></i>
+            Historial Médico
+          </a>
+          <a href="ver.html">
+            <i class="fa-solid fa-users"></i>
+            Pacientes
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <form class="consulta-form">
+          <h2>DETALLE DE CONSULTA</h2>
+
+          <div class="grid-top">
+            <div class="field">
+              <label>DNI:</label>
+              <input type="text" id="dni" readonly>
+            </div>
+            <div class="field">
+              <label>Nombre y Apellidos:</label>
+              <input type="text" id="nombre" readonly>
+            </div>
+            <div class="field">
+              <label>Teléfono:</label>
+              <input type="text" id="telefono" readonly>
+            </div>
+            <div class="field field-full">
+              <label>Dirección:</label>
+              <input type="text" id="direccion" readonly>
+            </div>
+            <div class="field">
+              <label>Fecha Nacimiento:</label>
+              <input type="text" id="fechaNacimiento" readonly>
+            </div>
+            <div class="field">
+              <label>Fecha Consulta:</label>
+              <input type="text" id="fechaConsulta" readonly>
+            </div>
+          </div>
+
+          <div class="exam-header">
+            <span>EXAMEN FÍSICO</span>
+            <div class="mini-fields">
+              <div class="mini-field"><label>P.A</label><input type="text" id="pa" readonly></div>
+              <div class="mini-field"><label>F.C.</label><input type="text" id="fc" readonly></div>
+              <div class="mini-field"><label>F.R</label><input type="text" id="fr" readonly></div>
+              <div class="mini-field"><label>T°</label><input type="text" id="temperatura" readonly></div>
+              <div class="mini-field"><label>Peso</label><input type="text" id="peso" readonly></div>
+              <div class="mini-field"><label>Talla</label><input type="text" id="talla" readonly></div>
+              <div class="mini-field"><label>SPO2</label><input type="text" id="spo2" readonly></div>
+            </div>
+          </div>
+
+          <div class="textarea-block">
+            <label>DIAGNÓSTICO:</label>
+            <textarea id="diagnostico" readonly></textarea>
+          </div>
+
+          <div class="textarea-block">
+            <label>TRATAMIENTO:</label>
+            <textarea id="tratamiento" readonly></textarea>
+          </div>
+
+          <div class="textarea-block">
+            <label>EXÁMENES AUXILIARES:</label>
+            <textarea id="observaciones" readonly></textarea>
+          </div>
+
+          <div class="bottom-fields">
+            <div class="field">
+              <label>Próxima Cita:</label>
+              <input type="text" id="proximaCita" readonly>
+            </div>
+            <div class="field">
+              <label>Atención por:</label>
+              <input type="text" id="atencionPor" readonly>
+            </div>
+          </div>
+
+          <div class="footer-box">
+            <div class="logo-area">
+              <img src="assets/img/logo.png" class="logo-img" alt="Logo">
+            </div>
+            <div class="footer-info">
+              <p>Sistema de gestión de historias</p>
+              <p>Clínicas obstetricia y Medicina</p>
+              <div class="botonera">
+                <button type="button" class="btn-volver" onclick="window.location.href='resultado.html'">
+                  <i class="fa-solid fa-arrow-left"></i> Volver
+                </button>
+                <button type="button" class="btn-imprimir" onclick="window.print()">
+                  <i class="fa-solid fa-print"></i> Imprimir
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/js/consulta-detalle.js"></script>
+</body>
+</html>

@@ -29,4 +29,7 @@ public class PacienteService {
     public Paciente guardar(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
+    public Paciente buscarPorDni(Integer dni) {
+        return pacienteRepository.findById(dni).orElse(null);
+    }
 }

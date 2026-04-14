@@ -36,4 +36,8 @@ public class PacienteController {
     public Paciente guardar(@RequestBody Paciente paciente) {
         return pacienteService.guardar(paciente);
     }
+    @GetMapping("/{dni}")
+    public Paciente buscarPorDni(@PathVariable Integer dni) {
+        return pacienteService.buscarPorDni(dni);
+    }
 }

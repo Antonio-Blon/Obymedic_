@@ -20,7 +20,18 @@
     </header>
 
     <main class="resultado-content">
-      <form class="resultado-form">
+      <!-- Contenedor para el mensaje de "sin consultas" -->
+      <div id="sin-consultas-mensaje" class="alert alert-info text-center" style="display: none;">
+        <i class="fa-solid fa-circle-info fa-2x mb-2"></i>
+        <h4>Aún no hizo un registro previo</h4>
+        <p>No se encontraron consultas para este paciente.</p>
+        <button id="btnNuevaConsultaMensaje" class="btn btn-primary mt-2">
+          <i class="fa-solid fa-plus-circle"></i> Nueva Consulta
+        </button>
+      </div>
+
+      <!-- Formulario normal (se oculta si no hay consultas) -->
+      <form id="resultadoForm" class="resultado-form" style="display: none;">
         <div class="form-group">
           <label for="nombre">
             <i class="fa-solid fa-user"></i>
@@ -56,10 +67,10 @@
           </button>
         </div>
 
-        <!-- Contenedor para mostrar las consultas -->
-        <div id="consultas-container" style="display: none;">
+
+        <div id="consultas-container" class="consultas-section" style="display: none;">
           <h5><i class="fa-solid fa-list"></i> Consultas anteriores:</h5>
-          <div id="lista-consultas"></div>
+          <div id="lista-consultas" class="list-group"></div>
         </div>
       </form>
     </main>

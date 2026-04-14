@@ -12,56 +12,82 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // ============================================
-    // CARGAR DATOS DEL PACIENTE
-    // ============================================
-    fetch(`http://localhost:8080/api/pacientes/${dni}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Paciente no encontrado');
-            }
-            return response.json();
-        })
-        .then(paciente => {
-            document.getElementById("nombre").value = paciente.nombreCompleto || "";
-            document.getElementById("telefono").value = paciente.telefono || "";
-            const fechaActual = new Date().toLocaleDateString();
-            document.getElementById("fecha").value = fechaActual;
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("❌ Paciente no encontrado");
-            document.getElementById("nombre").value = "No encontrado";
-            document.getElementById("telefono").value = "";
-            document.getElementById("fecha").value = "";
-        });
-
-    // ============================================
-    // BOTÓN: NUEVA CONSULTA
-    // ============================================
+    const sinConsultasDiv = document.getElementById("sin-consultas-mensaje");
+    const resultadoForm = document.getElementById("resultadoForm");
+    const nombreInput = document.getElementById("nombre");
+    const telefonoInput = document.getElementById("telefono");
+    const fechaInput = document.getElementById("fecha");
     const btnNuevaConsulta = document.getElementById("btnNuevaConsulta");
-    if (btnNuevaConsulta) {
-        btnNuevaConsulta.addEventListener("click", () => {
-            window.location.href = `registrar.html?dni=${dni}`;
-        });
-    }
-
-    // ============================================
-    // BOTÓN: MOSTRAR CONSULTA (muestra lista de consultas)
-    // ============================================
+    const btnNuevaConsultaMensaje = document.getElementById("btnNuevaConsultaMensaje");
     const btnMostrarConsulta = document.getElementById("btnMostrarConsulta");
     const consultasContainer = document.getElementById("consultas-container");
     const listaConsultas = document.getElementById("lista-consultas");
 
-    // Función para cargar y mostrar consultas
+    // ============================================
+    // FUNCIÓN PARA VERIFICAR SI EXISTEN CONSULTAS
+    // ============================================
+    function verificarConsultas() {
+        fetch(`http://localhost:8080/api/historias-clinicas?dni=${dni}`)
+            .then(response => response.json())
+            .then(consultas => {
+                if (consultas.length === 0) {
+                    // No hay consultas → mostrar mensaje, ocultar formulario
+                    sinConsultasDiv.style.display = "block";
+                    resultadoForm.style.display = "none";
+                } else {
+                    // Hay consultas → ocultar mensaje, mostrar formulario y cargar datos
+                    sinConsultasDiv.style.display = "none";
+                    resultadoForm.style.display = "block";
+                    cargarDatosPaciente();
+                    // Opcional: mostrar la lista automáticamente
+                    cargarConsultas();
+                }
+            })
+            .catch(error => {
+                console.error("Error al verificar consultas:", error);
+                sinConsultasDiv.style.display = "block";
+                resultadoForm.style.display = "none";
+            });
+    }
+
+    // ============================================
+    // CARGAR DATOS DEL PACIENTE (solo si hay consultas)
+    // ============================================
+    function cargarDatosPaciente() {
+        fetch(`http://localhost:8080/api/pacientes/${dni}`)
+            .then(response => {
+                if (!response.ok) throw new Error('Paciente no encontrado');
+                return response.json();
+            })
+            .then(paciente => {
+                nombreInput.value = paciente.nombreCompleto || "";
+                telefonoInput.value = paciente.telefono || "";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                nombreInput.value = "Error al cargar";
+                telefonoInput.value = "";
+            });
+    }
+
+    // ============================================
+    // CARGAR LISTA DE CONSULTAS
+    // ============================================
     function cargarConsultas() {
         fetch(`http://localhost:8080/api/historias-clinicas?dni=${dni}`)
             .then(response => response.json())
             .then(consultas => {
                 if (consultas.length === 0) {
                     consultasContainer.style.display = "none";
+                    fechaInput.value = "No hay consultas previas";
+                    fechaInput.style.color = "#999";
                     return;
                 }
+                
+                // Mostrar la fecha actual como la última consulta (opcional)
+                const ultimaFecha = consultas[consultas.length - 1].fechaConsulta;
+                fechaInput.value = ultimaFecha ? new Date(ultimaFecha).toLocaleDateString() : new Date().toLocaleDateString();
+                fechaInput.style.color = "";
                 
                 consultasContainer.style.display = "block";
                 listaConsultas.innerHTML = "";
@@ -71,7 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         ? new Date(consulta.fechaConsulta).toLocaleString() 
                         : "Fecha no disponible";
                     
-                    // Crear tarjeta con botón de eliminar
                     const card = document.createElement("div");
                     card.className = "list-group-item list-group-item-action";
                     card.style.display = "flex";
@@ -79,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     card.style.alignItems = "center";
                     card.style.cursor = "pointer";
                     
-                    // Parte izquierda: enlace al detalle
                     const link = document.createElement("a");
                     link.href = `consulta-detalle.html?dni=${dni}&id=${consulta.idHistoria}`;
                     link.style.textDecoration = "none";
@@ -106,14 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     `;
                     
-                    // Botón de eliminar
                     const deleteBtn = document.createElement("button");
                     deleteBtn.className = "btn btn-sm btn-danger ms-2";
                     deleteBtn.style.marginLeft = "10px";
                     deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
                     deleteBtn.title = "Eliminar consulta";
                     deleteBtn.onclick = (e) => {
-                        e.stopPropagation(); // Evita que se active el enlace
+                        e.stopPropagation();
                         if (confirm(`¿Eliminar consulta del ${fecha}?`)) {
                             eliminarConsulta(consulta.idHistoria);
                         }
@@ -131,34 +154,49 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // Función para eliminar consulta
+    // ============================================
+    // ELIMINAR CONSULTA
+    // ============================================
     function eliminarConsulta(idHistoria) {
         fetch(`http://localhost:8080/api/historias-clinicas/${idHistoria}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            method: 'DELETE'
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al eliminar la consulta');
-            }
-            // Si la respuesta es 204 No Content, no hay JSON
+            if (!response.ok) throw new Error('Error al eliminar');
             return response.text();
         })
         .then(() => {
             alert("✅ Consulta eliminada correctamente");
-            cargarConsultas(); // Recargar la lista
+            // Volver a verificar si hay consultas (para mostrar mensaje si es la última)
+            verificarConsultas();
         })
         .catch(error => {
             console.error("Error al eliminar:", error);
-            alert("❌ No se pudo eliminar la consulta. Asegúrate de que el backend tenga el endpoint DELETE.");
+            alert("❌ No se pudo eliminar la consulta");
         });
     }
 
+    // ============================================
+    // EVENTOS DE BOTONES
+    // ============================================
+    if (btnNuevaConsulta) {
+        btnNuevaConsulta.addEventListener("click", () => {
+            window.location.href = `registrar.html?dni=${dni}`;
+        });
+    }
+    if (btnNuevaConsultaMensaje) {
+        btnNuevaConsultaMensaje.addEventListener("click", () => {
+            window.location.href = `registrar.html?dni=${dni}`;
+        });
+    }
     if (btnMostrarConsulta) {
         btnMostrarConsulta.addEventListener("click", () => {
             cargarConsultas();
         });
     }
+
+    // ============================================
+    // INICIALIZAR: verificar si hay consultas
+    // ============================================
+    verificarConsultas();
 });

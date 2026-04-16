@@ -1,9 +1,6 @@
-// EVENTOS EN JAVASCRIPT (CLICK, CARGAR, KEY)
+
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // ============================================
-    // CALCULAR EDAD AUTOMATICAMENTE
-    // ============================================
+
     const fechaNacimiento = document.getElementById("fecha_nacimiento");
     const edadInput = document.getElementById("edad");
 
@@ -20,25 +17,18 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ============================================
-    // ESTABLECER FECHA ACTUAL EN FECHA CONSULTA
-    // ============================================
     const fechaConsulta = document.getElementById("fecha_consulta");
     if (fechaConsulta) {
         const hoy = new Date().toISOString().split("T")[0];
         fechaConsulta.value = hoy;
     }
 
-    // ============================================
-    // REGISTRAR CONSULTA (GUARDAR EN BD)
-    // ============================================
     const btnRegistrar = document.getElementById("btn-registrar");
 
     if (btnRegistrar) {
         btnRegistrar.addEventListener("click", (event) => {
             event.preventDefault();
 
-            // Obtener valores del formulario
             const dni = document.getElementById("dni")?.value;
             const nombreCompleto = document.getElementById("nombre_completo")?.value;
             const telefono = document.getElementById("telefono")?.value;
@@ -48,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const tratamiento = document.getElementById("tratamiento")?.value;
             const observaciones = document.getElementById("examenes_auxiliares")?.value;
 
-            // VALIDACIONES
             if (!dni || dni.trim() === "") {
                 alert("❌ El DNI es obligatorio");
                 return;
@@ -59,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Datos del Paciente (tabla: paciente)
             const pacienteData = {
                 dni: parseInt(dni),
                 nombreCompleto: nombreCompleto,
@@ -68,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 fechaNacimiento: fechaNacimientoValue || null
             };
 
-            // Datos de la Historia Clinica (tabla: historia_clinica)
             const historiaData = {
                 dni: parseInt(dni),
                 diagnostico: diagnostico || "",
@@ -79,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Paciente a guardar:", pacienteData);
             console.log("Historia a guardar:", historiaData);
 
-            // PASO 1: Guardar o actualizar PACIENTE
             fetch('http://localhost:8080/api/pacientes', {
                 method: 'POST',
                 headers: {
@@ -96,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(pacienteGuardado => {
                 console.log("✅ Paciente guardado:", pacienteGuardado);
 
-                // PASO 2: Guardar HISTORIA CLINICA
                 return fetch('http://localhost:8080/api/historias-clinicas', {
                     method: 'POST',
                     headers: {

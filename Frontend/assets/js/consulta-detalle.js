@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Cargar datos del paciente
     fetch(`http://localhost:8080/api/pacientes/${dni}`)
         .then(response => {
             if (!response.ok) throw new Error('Paciente no encontrado');
@@ -27,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("❌ Error al cargar datos del paciente");
         });
 
-    // Cargar consulta específica o la última
     if (idHistoria) {
-        // Cargar consulta por ID
         fetch(`http://localhost:8080/api/historias-clinicas/${idHistoria}`)
             .then(response => response.json())
             .then(consulta => {
@@ -43,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => console.error("Error al cargar consulta:", error));
     } else {
-        // Cargar última consulta
         fetch(`http://localhost:8080/api/historias-clinicas?dni=${dni}`)
             .then(response => response.json())
             .then(consultas => {

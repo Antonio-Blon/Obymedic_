@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dni = urlParams.get('dni');
 
     if (!dni) {
-        alert("❌ No se proporcionó un DNI");
+        alert(" No se proporcionó un DNI");
         return;
     }
 
@@ -50,9 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // ============================================
-    // CARGAR DATOS DEL PACIENTE (solo si hay consultas)
-    // ============================================
+    // CARGAR DATOS DEL PACIENTE
     function cargarDatosPaciente() {
         fetch(`http://localhost:8080/api/pacientes/${dni}`)
             .then(response => {
@@ -70,9 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
-    // ============================================
     // CARGAR LISTA DE CONSULTAS
-    // ============================================
     function cargarConsultas() {
         fetch(`http://localhost:8080/api/historias-clinicas?dni=${dni}`)
             .then(response => response.json())
@@ -149,14 +145,12 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => {
                 console.error("Error:", error);
-                alert("❌ Error al cargar el historial");
+                alert(" Error al cargar el historial");
                 consultasContainer.style.display = "none";
             });
     }
 
-    // ============================================
     // ELIMINAR CONSULTA
-    // ============================================
     function eliminarConsulta(idHistoria) {
         fetch(`http://localhost:8080/api/historias-clinicas/${idHistoria}`, {
             method: 'DELETE'
@@ -166,19 +160,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.text();
         })
         .then(() => {
-            alert("✅ Consulta eliminada correctamente");
-            // Volver a verificar si hay consultas (para mostrar mensaje si es la última)
+            alert(" Consulta eliminada correctamente");
             verificarConsultas();
         })
         .catch(error => {
             console.error("Error al eliminar:", error);
-            alert("❌ No se pudo eliminar la consulta");
+            alert(" No se pudo eliminar la consulta");
         });
     }
-
-    // ============================================
     // EVENTOS DE BOTONES
-    // ============================================
     if (btnNuevaConsulta) {
         btnNuevaConsulta.addEventListener("click", () => {
             window.location.href = `registrar.html?dni=${dni}`;

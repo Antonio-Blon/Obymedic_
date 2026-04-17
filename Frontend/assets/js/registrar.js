@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const observaciones = document.getElementById("examenes_auxiliares")?.value;
 
             if (!dni || dni.trim() === "") {
-                alert("❌ El DNI es obligatorio");
+                alert(" El DNI es obligatorio");
                 return;
             }
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.json();
             })
             .then(pacienteGuardado => {
-                console.log("✅ Paciente guardado:", pacienteGuardado);
+                console.log(" Paciente guardado:", pacienteGuardado);
 
                 return fetch('http://localhost:8080/api/historias-clinicas', {
                     method: 'POST',
@@ -97,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return response.json();
             })
             .then(consultaGuardada => {
-                console.log("✅ Consulta guardada:", consultaGuardada);
-                alert("✅ Consulta registrada correctamente");
+                console.log(" Consulta guardada:", consultaGuardada);
+                alert(" Consulta registrada correctamente");
                 window.location.href = 'ver.html';
             })
             .catch(error => {

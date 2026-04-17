@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const dni = dniInput.value.trim();
 
             if (!dni) {
-                alert("❌ Ingrese un DNI válido");
+                alert(" Ingrese un DNI válido");
                 return;
             }
 

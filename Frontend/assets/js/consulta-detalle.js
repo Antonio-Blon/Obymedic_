@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("❌ Error al cargar datos del paciente");
+            alert(" Error al cargar datos del paciente");
         });
 
     if (idHistoria) {

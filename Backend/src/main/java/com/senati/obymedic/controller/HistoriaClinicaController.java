@@ -30,25 +30,19 @@ public class HistoriaClinicaController {
         return historiaClinicaService.listarTodas();
     }
 
-    // ============================================
     // POST /api/historias-clinicas -> guarda una nueva historia clinica
-    // ============================================
     @PostMapping
     public HistoriaClinica guardar(@RequestBody HistoriaClinica historiaClinica) {
         return historiaClinicaService.guardar(historiaClinica);
     }
 
-    // ============================================
     // GET /api/historias-clinicas/{id} -> buscar por ID
-    // ============================================
     @GetMapping("/{id}")
     public HistoriaClinica buscarPorId(@PathVariable Integer id) {
         return historiaClinicaService.buscarPorId(id);
     }
 
-    // ============================================
     // DELETE /api/historias-clinicas/{id} -> eliminar por ID
-    // ============================================
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminar(@PathVariable Integer id) {
         if (historiaClinicaService.existsById(id)) {

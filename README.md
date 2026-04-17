@@ -120,10 +120,6 @@ El sistema cuenta con 4 tablas principales:
 ``` sql
 CREATE DATABASE obymedic;
 USE obymedic;
-
--- =========================
--- TABLA PACIENTES
--- =========================
 CREATE TABLE pacientes (
     id_paciente BIGINT AUTO_INCREMENT PRIMARY KEY,
     
@@ -142,9 +138,6 @@ CREATE TABLE pacientes (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- =========================
--- TABLA CONSULTAS
--- =========================
 CREATE TABLE consultas (
     id_consulta BIGINT AUTO_INCREMENT PRIMARY KEY,
 
